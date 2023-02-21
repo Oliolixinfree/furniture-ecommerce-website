@@ -1,0 +1,54 @@
+.header {
+  @apply py-6;
+}
+
+.navWrapper {
+  @apply flex justify-between items-center;
+}
+
+.logo {
+  @apply flex items-center gap-x-2;
+
+  img {
+    @apply w-10 h-10;
+  }
+
+  h1 {
+    @apply text-lg font-bold;
+  }
+}
+
+.menu {
+  @apply flex items-center gap-x-11;
+}
+
+.navItem a {
+  @apply font-medium cursor-pointer;
+}
+
+.navActive {
+  @apply font-bold text-green-600;
+}
+
+.navIcons {
+  @apply flex items-center gap-x-5 cursor-pointer;
+
+  .favIcon,
+  .cartIcon {
+    svg {
+      @apply w-5 h-5;
+    }
+  }
+
+  img {
+    @apply w-7 h-7;
+  }
+}
+
+.mobileMenu {
+  @apply hidden;
+
+  svg {
+    @apply w-5 h-5;
+  }
+}
