@@ -4,6 +4,7 @@ import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBagLine, RiHeartLine, RiMenuLine } from 'react-icons/ri';
+import { motion } from 'framer-motion';
 
 const navLinks = [
   { path: 'home', display: 'Home' },
@@ -38,12 +39,14 @@ export const Header = () => {
         <div className={styles.navIcons}>
           <span className={styles.favIcon}>
             <RiHeartLine />
+            <span className={styles.badge}>1</span>
           </span>
           <span className={styles.cartIcon}>
             <RiShoppingBagLine />
+            <span className={styles.badge}>1</span>
           </span>
           <span>
-            <img src={userIcon} alt={userIcon} />
+            <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt={userIcon} />
           </span>
         </div>
         <div className={styles.mobileMenu}>

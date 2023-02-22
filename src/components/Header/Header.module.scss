@@ -35,8 +35,15 @@
 
   .favIcon,
   .cartIcon {
+    @apply relative;
+
+    .badge {
+      @apply absolute -top-1/4 -right-1.5 bg-black text-white rounded-full 
+        text-xs font-semibold text-center content-[''] w-4 h-4 align-middle;
+    }
+
     svg {
-      @apply w-5 h-5;
+      @apply w-6 h-6;
     }
   }
 
