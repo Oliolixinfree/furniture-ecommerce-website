@@ -1,0 +1,26 @@
+.heroSection {
+  @apply bg-bghero-01 py-10;
+
+  .wrapper {
+    @apply grid grid-cols-2 items-center gap-8;
+
+    .content {
+      h2 {
+        @apply text-4xl font-semibold my-5;
+      }
+
+      p {
+        @apply text-slate-700 leading-7 first:font-medium;
+      }
+
+      .shopBtn {
+        @apply outline-none py-2 px-5 bg-slate-700 text-white rounded-md text-base cursor-pointer uppercase mt-10;
+      }
+    }
+    .heroImg {
+      img {
+        @apply w-full;
+      }
+    }
+  }
+}

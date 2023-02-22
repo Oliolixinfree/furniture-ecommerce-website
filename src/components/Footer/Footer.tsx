@@ -1,5 +1,10 @@
 import React from 'react';
+import { Container } from '../Container/Container';
 
 export const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <Container>
+      <div>Footer</div>
+    </Container>
+  );
 };

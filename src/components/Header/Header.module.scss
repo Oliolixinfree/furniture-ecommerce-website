@@ -22,12 +22,12 @@
   @apply flex items-center gap-x-11;
 }
 
-.navItem a {
-  @apply font-medium cursor-pointer;
+.navItem {
+  @apply font-medium  text-slate-700 cursor-pointer;
 }
 
 .navActive {
-  @apply font-bold text-green-600;
+  @apply font-bold text-slate-700;
 }
 
 .navIcons {
@@ -38,12 +38,12 @@
     @apply relative;
 
     .badge {
-      @apply absolute -top-1/4 -right-1.5 bg-black text-white rounded-full 
+      @apply absolute -top-1/4 -right-1.5 bg-slate-700 text-white rounded-full 
         text-xs font-semibold text-center content-[''] w-4 h-4 align-middle;
     }
 
     svg {
-      @apply w-6 h-6;
+      @apply w-6 h-6 fill-slate-700;
     }
   }
 

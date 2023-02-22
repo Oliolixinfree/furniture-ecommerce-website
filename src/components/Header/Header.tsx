@@ -5,6 +5,7 @@ import userIcon from '../../assets/images/user-icon.png';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBagLine, RiHeartLine, RiMenuLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
+import { Container } from '../Container/Container';
 
 const navLinks = [
   { path: 'home', display: 'Home' },
@@ -14,47 +15,49 @@ const navLinks = [
 
 export const Header = () => {
   return (
-    <header className={styles.header}>
-      <div className={styles.navWrapper}>
-        <div className={styles.logo}>
-          <img src={logo} alt={logo} />
-          <div>
-            <h1>Multimart</h1>
-            <p>Since 1995</p>
+    <Container>
+      <header className={styles.header}>
+        <div className={styles.navWrapper}>
+          <div className={styles.logo}>
+            <img src={logo} alt={logo} />
+            <div>
+              <h1>Multimart</h1>
+              <p>Since 1995</p>
+            </div>
+          </div>
+          <div className={styles.navigation}>
+            <ul className={styles.menu}>
+              {navLinks.map((i) => (
+                <li className={styles.navItem} key={i.path}>
+                  <NavLink
+                    to={i.path}
+                    className={(navClass) => (navClass.isActive ? styles.navActive : '')}>
+                    {i.display}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.navIcons}>
+            <span className={styles.favIcon}>
+              <RiHeartLine />
+              <span className={styles.badge}>1</span>
+            </span>
+            <span className={styles.cartIcon}>
+              <RiShoppingBagLine />
+              <span className={styles.badge}>1</span>
+            </span>
+            <span>
+              <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt={userIcon} />
+            </span>
+          </div>
+          <div className={styles.mobileMenu}>
+            <span>
+              <RiMenuLine />
+            </span>
           </div>
         </div>
-        <div className={styles.navigation}>
-          <ul className={styles.menu}>
-            {navLinks.map((i) => (
-              <li className={styles.navItem} key={i.path}>
-                <NavLink
-                  to={i.path}
-                  className={(navClass) => (navClass.isActive ? styles.navActive : '')}>
-                  {i.display}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.navIcons}>
-          <span className={styles.favIcon}>
-            <RiHeartLine />
-            <span className={styles.badge}>1</span>
-          </span>
-          <span className={styles.cartIcon}>
-            <RiShoppingBagLine />
-            <span className={styles.badge}>1</span>
-          </span>
-          <span>
-            <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt={userIcon} />
-          </span>
-        </div>
-        <div className={styles.mobileMenu}>
-          <span>
-            <RiMenuLine />
-          </span>
-        </div>
-      </div>
-    </header>
+      </header>
+    </Container>
   );
 };
