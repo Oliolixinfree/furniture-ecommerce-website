@@ -4,6 +4,7 @@ import { Helmet } from '../../components/Helmet/Helmet';
 import { Container } from '../../components/Container/Container';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Services } from '../../services/Services';
 
 export const Home = () => {
   const year = new Date().getFullYear();
@@ -29,6 +30,7 @@ export const Home = () => {
           </div>
         </Container>
       </section>
+      <Services />
     </Helmet>
   );
 };

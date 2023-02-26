@@ -1,0 +1,20 @@
+.wrapper {
+  @apply columns-4 py-6;
+}
+.serviceItem {
+  @apply p-5 flex items-center gap-x-3 rounded-md;
+
+  span {
+    @apply bg-slate-700 rounded-full p-3 cursor-pointer;
+    svg {
+      @apply w-9 h-9 fill-white;
+    }
+  }
+
+  h3 {
+    @apply text-slate-700 text-lg font-semibold;
+  }
+  p {
+    @apply text-sm mt-1 text-slate-600;
+  }
+}
