@@ -1,0 +1,33 @@
+.productItem {
+  @apply cursor-pointer;
+
+  .productInfo {
+    .productName {
+      @apply text-slate-700 text-lg font-semibold mt-4;
+
+      &:hover {
+        @apply text-slate-500;
+      }
+    }
+
+    span {
+      @apply text-sm text-slate-700;
+    }
+  }
+
+  .productCardBottom {
+    @apply flex items-center justify-between py-3;
+
+    .price {
+      @apply text-slate-700 text-xl font-medium;
+    }
+
+    span {
+      @apply p-1 cursor-pointer;
+
+      svg {
+        @apply fill-white w-5 h-5 bg-slate-700 rounded-full;
+      }
+    }
+  }
+}
