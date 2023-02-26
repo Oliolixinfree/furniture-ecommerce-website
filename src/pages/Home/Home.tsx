@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Home.module.scss';
 import productImg from '../../assets/images/hero-img.png';
+import counterImg from '../../assets/images/counter-timer-img.png';
 import { Helmet } from '../../components/Helmet/Helmet';
 import { Container } from '../../components/Container/Container';
 import { Link } from 'react-router-dom';
@@ -9,23 +10,27 @@ import { Services } from '../../services/Services';
 import { ProductsList } from '../../components/UI/ProductsList/ProductsList';
 import products from '../../assets/data/products';
 import { Products } from '../../types/products';
+import { Clock } from '../../components/UI/Clock/Clock';
 
 export const Home = () => {
   const year = new Date().getFullYear();
 
-  const [data, setData] = useState<Products[]>(products);
+  const [trendingProducts, setTrendingProduct] = useState<Products[]>(products);
+  const [bestSalesProducts, setBestSalesProducts] = useState<Products[]>(products);
 
   useEffect(() => {
-    const filtredProducts = products.filter((item) => item.category === 'chair');
+    const filtredTrendingProducts = products.filter((item) => item.category === 'chair');
+    const filtredBestSalesProducts = products.filter((item) => item.category === 'sofa');
 
-    setData(filtredProducts);
+    setTrendingProduct(filtredTrendingProducts);
+    setBestSalesProducts(filtredBestSalesProducts);
   }, []);
 
   return (
     <Helmet title={'-Home'}>
       <section className={styles.heroSection}>
         <Container>
-          <div className={styles.wrapper}>
+          <div className={styles.contentWrapper}>
             <div className={styles.content}>
               <p className={styles.subtitle}>Trending products in {year}</p>
               <h2>Make Your Interior More Minimalist & Modern</h2>
@@ -43,11 +48,40 @@ export const Home = () => {
           </div>
         </Container>
       </section>
+
       <Services />
+
       <section className={styles.trendingProducts}>
         <Container>
           <h2 className={styles.sectionTitle}>Trending Products</h2>
-          <ProductsList data={data} />
+          <ProductsList data={trendingProducts} />
+        </Container>
+      </section>
+
+      <section className={styles.bestSales}>
+        <Container>
+          <h2 className={styles.sectionTitle}>Best Sales</h2>
+          <ProductsList data={bestSalesProducts} />
+        </Container>
+      </section>
+
+      <section className={styles.timerCount}>
+        <Container>
+          <div className={styles.timerCountWrapper}>
+            <div>
+              <div className={styles.clockTopContent}>
+                <h4>Limited Offers</h4>
+                <h3>Quality Armchair</h3>
+              </div>
+              <Clock />
+              <motion.button whileTap={{ scale: 1.2 }} className={styles.buyBtn}>
+                <Link to="/shop">Visit Store</Link>
+              </motion.button>
+            </div>
+            <div>
+              <img src={counterImg} alt={counterImg} />
+            </div>
+          </div>
         </Container>
       </section>
     </Helmet>

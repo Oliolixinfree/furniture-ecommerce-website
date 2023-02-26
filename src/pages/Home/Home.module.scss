@@ -1,7 +1,7 @@
 .heroSection {
   @apply bg-bghero-01 py-10;
 
-  .wrapper {
+  .contentWrapper {
     @apply grid grid-cols-2 items-center gap-8;
 
     .content {
@@ -14,7 +14,12 @@
       }
 
       .shopBtn {
-        @apply outline-none py-2 px-5 bg-slate-700 text-white rounded-md text-base cursor-pointer uppercase mt-10;
+        @apply outline-none py-2 px-5 bg-slate-700
+          text-white rounded-md text-base cursor-pointer uppercase mt-10;
+
+        &:hover {
+          @apply bg-slate-800;
+        }
       }
     }
     .heroImg {
@@ -25,8 +30,41 @@
   }
 }
 
-.trendingProducts {
+.trendingProducts,
+.bestSales {
+  @apply py-8;
+
   .sectionTitle {
     @apply text-slate-700 text-center font-semibold;
+  }
+}
+
+.timerCount {
+  @apply bg-slate-700;
+
+  .timerCountWrapper {
+    @apply flex justify-between items-center;
+
+    .clockTopContent {
+      h4 {
+        @apply text-white text-base mb-2;
+      }
+      h3 {
+        @apply text-white text-lg mb-3 font-medium;
+      }
+    }
+
+    .buyBtn {
+      @apply outline-none py-2 px-5 bg-white
+      text-slate-700 rounded-md text-base font-semibold cursor-pointer uppercase mt-10;
+
+      &:hover {
+        @apply bg-slate-100;
+      }
+    }
+
+    img {
+      /* @apply w-4/6 h-4/6 object-contain; */
+    }
   }
 }

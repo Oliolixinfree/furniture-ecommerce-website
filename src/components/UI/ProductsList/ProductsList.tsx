@@ -10,8 +10,8 @@ interface IProductsList {
 export const ProductsList = ({ data }: IProductsList) => {
   return (
     <div className={styles.wrapper}>
-      {data.map((item) => (
-        <ProductCard item={item} />
+      {data?.map((item) => (
+        <ProductCard key={item.id} item={item} />
       ))}
     </div>
   );

@@ -1,0 +1,23 @@
+.clockWrapper {
+  @apply flex items-center gap-4;
+
+  .clockData {
+    @apply flex items-center gap-4;
+
+    .time {
+      @apply text-center;
+
+      h1 {
+        @apply text-white text-2xl font-medium;
+      }
+
+      h5 {
+        @apply text-white;
+      }
+    }
+
+    span {
+      @apply text-white text-2xl font-medium;
+    }
+  }
+}
