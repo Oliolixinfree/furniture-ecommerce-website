@@ -17,13 +17,24 @@ export const Home = () => {
 
   const [trendingProducts, setTrendingProduct] = useState<Products[]>(products);
   const [bestSalesProducts, setBestSalesProducts] = useState<Products[]>(products);
+  // const [mobileProducts, setMobileProducts] = useState<Products[]>(products);
+  // const [wirelessProducts, setWirelessProducts] = useState<Products[]>(products);
+  const [newArrivals, setNewArrivals] = useState<Products[]>(products);
 
   useEffect(() => {
     const filtredTrendingProducts = products.filter((item) => item.category === 'chair');
     const filtredBestSalesProducts = products.filter((item) => item.category === 'sofa');
+    // const filtredMobileProducts = products.filter((item) => item.category === 'mobile');
+    // const filtredWirelessProducts = products.filter((item) => item.category === 'wireless');
+    const filterNewArrivals = products.filter(
+      (item) => item.category === 'mobile' || item.category === 'wireless',
+    );
 
     setTrendingProduct(filtredTrendingProducts);
     setBestSalesProducts(filtredBestSalesProducts);
+    // setMobileProducts(filtredMobileProducts);
+    // setWirelessProducts(filtredWirelessProducts);
+    setNewArrivals(filterNewArrivals);
   }, []);
 
   return (
@@ -82,6 +93,15 @@ export const Home = () => {
               <img src={counterImg} alt={counterImg} />
             </div>
           </div>
+        </Container>
+      </section>
+
+      <section className={styles.newArrivals}>
+        <Container>
+          <h2 className={styles.sectionTitle}>New Arrivals</h2>
+          {/* <ProductsList data={mobileProducts} />
+          <ProductsList data={wirelessProducts} /> */}
+          <ProductsList data={newArrivals} />
         </Container>
       </section>
     </Helmet>
