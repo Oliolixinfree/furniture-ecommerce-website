@@ -32,11 +32,18 @@
 
 .trendingProducts,
 .bestSales,
-.newArrivals {
+.newArrivals,
+.popularCategory {
   @apply py-8;
 
   .sectionTitle {
     @apply text-slate-700 text-center font-semibold;
+  }
+}
+
+.popularCategory {
+  .sectionTitle {
+    @apply mb-4;
   }
 }
 

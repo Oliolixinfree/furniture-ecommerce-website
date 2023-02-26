@@ -1,8 +1,7 @@
-import React from 'react';
 import styles from './Header.module.scss';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RiShoppingBagLine, RiHeartLine, RiMenuLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 import { Container } from '../Container/Container';
@@ -18,13 +17,15 @@ export const Header = () => {
     <Container>
       <header className={styles.header}>
         <div className={styles.navWrapper}>
-          <div className={styles.logo}>
-            <img src={logo} alt={logo} />
-            <div>
-              <h1>Multimart</h1>
-              <p>Since 1995</p>
+          <Link to="/home">
+            <div className={styles.logo}>
+              <img src={logo} alt={logo} />
+              <div>
+                <h1>Multimart</h1>
+                <p>Since 1995</p>
+              </div>
             </div>
-          </div>
+          </Link>
           <div className={styles.navigation}>
             <ul className={styles.menu}>
               {navLinks.map((i) => (

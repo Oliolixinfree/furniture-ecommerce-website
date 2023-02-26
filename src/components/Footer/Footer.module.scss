@@ -1,0 +1,50 @@
+.footer {
+  @apply pt-10 pb-8 bg-slate-700;
+}
+
+.wrapper {
+  @apply columns-4 grid grid-cols-4 justify-items-center;
+
+  .logo {
+    @apply mb-3;
+
+    h1 {
+      @apply text-lg font-bold text-white;
+    }
+  }
+
+  .footerText {
+    @apply text-slate-100;
+  }
+
+  .quickLinks {
+    .quickLinksTitle {
+      @apply mb-5 text-slate-100 text-base font-semibold;
+    }
+  }
+
+  ul {
+    @apply grid gap-2;
+  }
+  li {
+    @apply text-slate-100 flex gap-3 items-center;
+
+    &:hover {
+      @apply text-slate-400;
+    }
+  }
+}
+
+.copyright {
+  p {
+    @apply text-slate-100 text-center mt-12;
+  }
+
+  span {
+    @apply font-semibold underline;
+
+    &:hover {
+      @apply text-slate-400;
+    }
+  }
+}

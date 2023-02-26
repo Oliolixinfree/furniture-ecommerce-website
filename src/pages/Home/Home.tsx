@@ -20,6 +20,7 @@ export const Home = () => {
   // const [mobileProducts, setMobileProducts] = useState<Products[]>(products);
   // const [wirelessProducts, setWirelessProducts] = useState<Products[]>(products);
   const [newArrivals, setNewArrivals] = useState<Products[]>(products);
+  const [popularProducts, setPopularProducts] = useState<Products[]>(products);
 
   useEffect(() => {
     const filtredTrendingProducts = products.filter((item) => item.category === 'chair');
@@ -29,12 +30,14 @@ export const Home = () => {
     const filterNewArrivals = products.filter(
       (item) => item.category === 'mobile' || item.category === 'wireless',
     );
+    const filtredPopularProducts = products.filter((item) => item.category === 'watch');
 
     setTrendingProduct(filtredTrendingProducts);
     setBestSalesProducts(filtredBestSalesProducts);
     // setMobileProducts(filtredMobileProducts);
     // setWirelessProducts(filtredWirelessProducts);
     setNewArrivals(filterNewArrivals);
+    setPopularProducts(filtredPopularProducts);
   }, []);
 
   return (
@@ -102,6 +105,13 @@ export const Home = () => {
           {/* <ProductsList data={mobileProducts} />
           <ProductsList data={wirelessProducts} /> */}
           <ProductsList data={newArrivals} />
+        </Container>
+      </section>
+
+      <section className={styles.popularCategory}>
+        <Container>
+          <h2 className={styles.sectionTitle}>Popular in Category</h2>
+          <ProductsList data={popularProducts} />
         </Container>
       </section>
     </Helmet>

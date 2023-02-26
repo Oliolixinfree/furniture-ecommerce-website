@@ -1,5 +1,5 @@
 .header {
-  @apply py-6;
+  @apply py-8;
 }
 
 .navWrapper {
@@ -24,6 +24,10 @@
 
 .navItem {
   @apply font-medium  text-slate-700 cursor-pointer;
+
+  &:hover {
+    @apply text-slate-500;
+  }
 }
 
 .navActive {
