@@ -38,6 +38,28 @@ export const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const variants = {
+    open: { opacity: [0, 0.5, 1], x: 0 },
+    close: { opacity: [0, 0.5, 1], x: 1 },
+  };
+
+  const variantsItems = {
+    open: {
+      y: [30, 0],
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 },
+      },
+    },
+    closed: {
+      y: [30, 0],
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000 },
+      },
+    },
+  };
+
   return (
     <header className={fixed ? styles.stickyHeader : styles.header} ref={headerRef}>
       <Container>
@@ -51,22 +73,31 @@ export const Header = () => {
               </div>
             </div>
           </Link>
-          <div
+          <motion.div
+            animate={isOpen ? 'open' : 'close'}
+            transition={{ duration: 0.3 }}
+            variants={variants}
             className={isOpen ? styles.navigation : styles.closeMenu}
             onClick={() => toggleMenu()}>
             <ul className={styles.menu} onClick={(e) => e.stopPropagation()}>
               {navLinks.map((i) => (
-                <li className={styles.navItem} key={i.path}>
+                <motion.li
+                  variants={variantsItems}
+                  animate={isOpen ? 'open' : 'closed'}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={styles.navItem}
+                  key={i.path}>
                   <NavLink
                     onClick={() => toggleMenu()}
                     to={i.path}
                     className={(navClass) => (navClass.isActive ? styles.navActive : '')}>
                     {i.display}
                   </NavLink>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
           <div className={styles.navIcons}>
             <span className={styles.favIcon}>
               <RiHeartLine />
@@ -80,9 +111,9 @@ export const Header = () => {
               <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt={userIcon} />
             </span>
             <div onClick={() => toggleMenu()} className={styles.mobileMenuBtn}>
-              <span>
+              <motion.span whileTap={{ scale: 1.2 }}>
                 <RiMenuLine />
-              </span>
+              </motion.span>
             </div>
           </div>
         </div>
