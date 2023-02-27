@@ -1,4 +1,5 @@
 import styles from './Header.module.scss';
+import { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { Link, NavLink } from 'react-router-dom';
@@ -13,9 +14,33 @@ const navLinks = [
 ];
 
 export const Header = () => {
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [fixed, setFixed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const stickyHeader = () => {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
+        setFixed(true);
+      } else {
+        setFixed(false);
+      }
+    });
+  };
+
+  useEffect(() => {
+    stickyHeader();
+
+    return () => window.removeEventListener('scroll', stickyHeader);
+  });
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <Container>
-      <header className={styles.header}>
+    <header className={fixed ? styles.stickyHeader : styles.header} ref={headerRef}>
+      <Container>
         <div className={styles.navWrapper}>
           <Link to="/home">
             <div className={styles.logo}>
@@ -26,11 +51,14 @@ export const Header = () => {
               </div>
             </div>
           </Link>
-          <div className={styles.navigation}>
-            <ul className={styles.menu}>
+          <div
+            className={isOpen ? styles.navigation : styles.closeMenu}
+            onClick={() => toggleMenu()}>
+            <ul className={styles.menu} onClick={(e) => e.stopPropagation()}>
               {navLinks.map((i) => (
                 <li className={styles.navItem} key={i.path}>
                   <NavLink
+                    onClick={() => toggleMenu()}
                     to={i.path}
                     className={(navClass) => (navClass.isActive ? styles.navActive : '')}>
                     {i.display}
@@ -51,14 +79,14 @@ export const Header = () => {
             <span>
               <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt={userIcon} />
             </span>
-          </div>
-          <div className={styles.mobileMenu}>
-            <span>
-              <RiMenuLine />
-            </span>
+            <div onClick={() => toggleMenu()} className={styles.mobileMenuBtn}>
+              <span>
+                <RiMenuLine />
+              </span>
+            </div>
           </div>
         </div>
-      </header>
-    </Container>
+      </Container>
+    </header>
   );
 };

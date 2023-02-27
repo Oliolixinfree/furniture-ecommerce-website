@@ -65,8 +65,11 @@ export const Footer = () => {
               <li>
                 <RiMapPin2Line />
                 <p className={styles.footerText}>
-                  <a href="#" target="_blank">
-                    322 Mayer, Baltimor, USA
+                  <a
+                    href="https://www.google.com/maps/place/The+Cellars+Wine+%26+Beer+Shop/@39.2671299,-76.6025543,17z/data=!4m13!1m7!3m6!1s0x89c803aed6f483b7:0x44896a84223e758!2z0JHQsNC70YLQuNC80L7RgCwg0JzRjdGA0LjQu9C10L3QtCwg0KHQqNCQ!3b1!8m2!3d39.2903848!4d-76.6121893!3m4!1s0x89c803748f38bd1f:0xf7f28c6ce82cf37e!8m2!3d39.268007!4d-76.6001215"
+                    target="_blank"
+                    rel="noreferrer">
+                    322 Whetstone Way, Baltimor, USA
                   </a>
                 </p>
               </li>

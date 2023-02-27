@@ -1,5 +1,10 @@
 .header {
-  @apply py-8;
+  @apply py-4 lg:py-8;
+}
+
+.stickyHeader {
+  @apply py-4 sticky top-0 left-0 z-10 shadow-md bg-white
+    lg:py-8;
 }
 
 .navWrapper {
@@ -10,16 +15,35 @@
   @apply flex items-center gap-x-2;
 
   img {
-    @apply w-10 h-10;
+    @apply w-10 h-10 lg:w-12 lg:h-12;
   }
 
   h1 {
-    @apply text-lg font-bold;
+    @apply font-bold text-xl lg:text-2xl;
   }
 }
 
+.navigation {
+  @apply fixed top-0 left-0 w-full h-full z-10 bg-slate-700 bg-opacity-50
+    lg:relative lg:z-10 lg:w-auto lg:h-auto;
+}
 .menu {
-  @apply flex items-center gap-x-11;
+  @apply absolute top-0 right-0 w-64 h-full bg-white z-10
+    flex flex-col gap-y-11 items-center justify-center
+    lg:relative lg:flex-row lg:justify-between;
+}
+
+.closeMenu {
+  @apply fixed top-0 left-0 w-full h-full z-10 bg-slate-700 bg-opacity-50 hidden
+    lg:block lg:relative lg:z-10 lg:w-auto lg:h-auto;
+}
+
+.mobileMenuBtn {
+  @apply block lg:hidden;
+
+  svg {
+    @apply w-6 h-6 fill-slate-700;
+  }
 }
 
 .navItem {
@@ -53,13 +77,5 @@
 
   img {
     @apply w-7 h-7;
-  }
-}
-
-.mobileMenu {
-  @apply hidden;
-
-  svg {
-    @apply w-5 h-5;
   }
 }
